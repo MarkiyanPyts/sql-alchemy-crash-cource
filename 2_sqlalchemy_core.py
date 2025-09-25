@@ -1,6 +1,10 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+from dotenv import load_dotenv
+import os
 
-engine = create_engine("postgresql+psycopg", echo=True)
+load_dotenv()
+
+engine = create_engine(f"postgresql+psycopg2://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_USER')}@localhost:5432/tutorialdatabase", echo=True)
 
 meta = MetaData()
 

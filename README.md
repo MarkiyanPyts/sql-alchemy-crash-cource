@@ -14,3 +14,6 @@ when console activates
 `Pragma table_info(people);`
 
 `SELECT * FROM people;`
+
+## Working With Postgres
+Create tutorialdatabase in PGAdmin
