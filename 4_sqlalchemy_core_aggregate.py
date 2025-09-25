@@ -22,13 +22,13 @@ things = Table(
     Column('id', Integer, primary_key=True),
     Column('description', String, nullable=False),
     Column('value', Float, nullable=False),
-    Column('owner_id', Integer, ForeignKey('people.id'))
+    Column('owner', Integer, ForeignKey('people.id'))
 )
 
 meta.create_all(engine)
 
 conn = engine.connect()
-ground_by_statement = things.select().with_only_columns(things.c.owner_id, func.sum(things.c.value)).group_by(things.c.owner_id).having(func.sum(things.c.value) > 100)
+ground_by_statement = things.select().with_only_columns(things.c.owner, func.sum(things.c.value)).group_by(things.c.owner).having(func.sum(things.c.value) > 100)
 result = conn.execute(ground_by_statement)
 
 for row in result.fetchall():
