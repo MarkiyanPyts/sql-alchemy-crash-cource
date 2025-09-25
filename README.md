@@ -2,6 +2,7 @@
 https://www.youtube.com/watch?v=529LYDgRTgQ
 
 ## Installation 
+`uv install`
 
 https://docs.sqlalchemy.org/en/21/intro.html#installation
 
@@ -17,3 +18,6 @@ when console activates
 
 ## Working With Postgres
 Create tutorialdatabase in PGAdmin
+
+## Run Example files
+`uv run 5_sqlalchemy_orm.py`
