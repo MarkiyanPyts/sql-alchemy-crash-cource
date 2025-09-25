@@ -48,7 +48,16 @@ insert_things = things.insert().values(
     ]
 )
 
+join_statement = people.join(things, people.c.id == things.c.owner_id)
+# join_statement = people.outerjoin(things, people.c.id == things.c.owner_id) left join
+select_statement = people.select().with_only_columns(people.c.name, things.c.description).select_from(join_statement)
 
-conn.execute(insert_people)
-conn.execute(insert_things)
+
+
+# conn.execute(insert_people)
+# conn.execute(insert_things)
+
+result = conn.execute(select_statement)
+for row in result.fetchall():
+    print(row)
 conn.commit()
